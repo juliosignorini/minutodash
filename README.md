@@ -1,160 +1,158 @@
-# Dashboard MinutoCyber - Inteligência Cibernética em Tempo Real
+# 🛡️ MinutoCyber Dashboard
 
-## 📊 Visão Geral
+Dashboard de cibersegurança em tempo real com métricas, alertas e análises de ameaças.
 
-Dashboard interativo de cibersegurança que apresenta dados em tempo real sobre ameaças, vulnerabilidades, malware e indicadores de comprometimento (IOCs). Desenvolvido para fornecer uma visão executiva e técnica da situação de segurança cibernética.
+## 🚀 Demo
 
-## 🚀 Funcionalidades
+**URL Ativa:** [Ver Dashboard](https://dashboard-yaehsr.manus.space/)
 
-### 📈 Métricas Principais
-- **CVEs Críticas**: Monitoramento de vulnerabilidades críticas via NIST NVD
-- **Alertas CISA**: Alertas oficiais do US-CERT
-- **Análise de Malware**: Samples e famílias de malware ativas
-- **IOCs**: Indicadores de comprometimento com reputação
+## ✨ Funcionalidades
 
-### 🌍 Visualizações Interativas
-- **Mapa Mundial de Ameaças**: Visualização geográfica de ameaças por país
-- **Gráficos de Distribuição**: Severidade, países, setores atacados
-- **Timeline Interativo**: Tendências de 7 dias com múltiplas métricas
-- **Executive Risk Score**: Score de risco calculado algoritmicamente
+- 📊 **Métricas em Tempo Real**: CVEs críticas, alertas CISA, análise de malware
+- 🎯 **TTPs Mapeados**: Integração com framework MITRE ATT&CK
+- 🗞️ **MinutoNews**: Digests semanais de tecnologia e cibersegurança
+- 📋 **Relatórios RIC**: Relatórios semanais de incidentes cibernéticos
+- 🌙 **Tema Claro/Escuro**: Alternância entre temas com persistência
+- 📱 **Responsivo**: Funciona perfeitamente em desktop e mobile
+- 🔄 **Auto Refresh**: Atualização automática a cada 5 minutos
+- 🟢 **Status Dinâmico**: Indicador Online/Offline baseado em atividade
 
-### 🎯 Recursos Avançados
-- **Busca Global**: Pesquisa unificada por IOCs, CVEs, APTs
-- **Filtros Dinâmicos**: Por severidade, tipo e período temporal
-- **Temas**: Alternância entre modo claro e escuro
-- **Exportação**: YARA Rules, Sigma Rules, CSV, JSON
-- **Responsivo**: Layout adaptável para desktop e mobile
+## 🛠️ Tecnologias
 
-## 🛠️ Tecnologias Utilizadas
-
-- **Frontend**: HTML5, CSS3, JavaScript (ES6+)
-- **Styling**: Tailwind CSS
+- **Frontend**: HTML5, CSS3 (Tailwind), JavaScript ES6+
 - **Gráficos**: Chart.js
-- **APIs**: NIST NVD, CISA, VirusTotal, MITRE ATT&CK
-- **Dados**: Feeds de threat intelligence em tempo real
+- **Ícones**: Emojis nativos
+- **Hospedagem**: Compatível com GitHub Pages, Vercel, Netlify
 
-## 📁 Estrutura do Projeto
+## 📦 Estrutura do Projeto
 
 ```
-dashboard-minutocyber/
-├── index.html              # Arquivo principal do dashboard
-├── world-map.png           # Imagem do mapa mundial
-└── README.md              # Documentação do projeto
+├── index.html              # Arquivo principal
+├── minutodash.png          # Logo tema escuro
+├── assets/
+│   ├── images/
+│   │   ├── minutodash_black.png    # Logo tema claro
+│   │   └── ...
+│   ├── js/                 # Scripts auxiliares
+│   └── css/                # Estilos adicionais
+└── README.md              # Este arquivo
 ```
 
-## 🎨 Correções Implementadas
+## 🚀 Deploy Rápido
 
-### ✅ Botões de Filtro
-- **Tema Escuro**: Fundo cinza escuro (#334155) harmonioso
-- **Tema Claro**: Fundo cinza claro (#e8e8e8) consistente com caixas
-- Efeitos hover apropriados para cada tema
-- Transições suaves (0.2s)
+### GitHub Pages
+1. Fork este repositório
+2. Vá em Settings > Pages
+3. Source: Deploy from a branch
+4. Branch: main / root
+5. Salve e aguarde alguns minutos
 
-### ✅ Dropdowns de Filtro
-- **Tema Escuro**: Fundo cinza escuro matching com botões
-- **Tema Claro**: Fundo cinza claro igual às caixas de conteúdo
-- Bordas harmonizadas com cada tema
-- Texto com contraste adequado
+### Vercel
+1. Importe este repositório no Vercel
+2. Deploy automático
+3. URL personalizada disponível
 
-### ✅ Mapa Mundial
-- **Imagem de fundo**: Mapa mundial real em vez de retângulos
-- **Indicadores**: Círculos coloridos por país com dados de ameaças
-- **Filtros funcionais**: Alto, Médio, Baixo
-- **Interatividade**: Tooltips e botão de tela cheia
+### Netlify
+1. Arraste a pasta do projeto para Netlify
+2. Deploy instantâneo
+3. Domínio personalizado gratuito
 
-## 🚀 Como Usar
+## 🔧 Configuração Local
 
-1. **Instalação**: Extraia o arquivo ZIP em um servidor web
-2. **Acesso**: Abra `index.html` em um navegador moderno
-3. **Navegação**: Use as abas para alternar entre seções
-4. **Filtros**: Utilize os filtros para refinar visualizações
-5. **Temas**: Alterne entre modo claro/escuro conforme preferência
+```bash
+# Clone o repositório
+git clone https://github.com/SEU-USUARIO/minutocyber-dashboard.git
+
+# Navegue para o diretório
+cd minutocyber-dashboard
+
+# Abra o index.html no navegador
+# Ou use um servidor local:
+python -m http.server 8000
+# Acesse: http://localhost:8000
+```
 
 ## 📊 Seções do Dashboard
 
-### 🎯 Executive
-- Risk Score executivo
-- Métricas de negócio
-- Principais fatores de risco
-
 ### 🔥 Vulnerabilidades
 - CVEs críticas do NIST NVD
-- Distribuição por severidade
-- Exploits ativos
+- Alertas CISA atualizados
+- Scores CVSS e impacto
 
 ### ⚠️ Ameaças
 - Grupos APT ativos
-- TTPs mapeados (MITRE ATT&CK)
-- Campanhas ativas
+- Países com mais ameaças
+- Níveis de ameaça atuais
 
 ### 🦠 Malware
-- Análise de famílias
-- Samples recentes
-- Threat scores
+- Análise VirusTotal
+- Famílias de malware ativas
+- IOCs e indicadores
 
-### 🌍 Geo
-- Mapa mundial interativo
-- Distribuição por países
-- Estatísticas geográficas
+### 📰 Notícias
+- Digests semanais MinutoNews
+- Tendências de cibersegurança
+- Atualizações do setor
 
-### 📰 News
-- Digest semanal MinutoNews
-- Relatórios de incidentes (RIC)
-- Atualizações de segurança
+### 📈 Analytics
+- Gráficos interativos
+- Tendências temporais
+- Estatísticas consolidadas
 
-## 🔧 Configuração
+### 📋 RIC
+- Relatórios semanais de incidentes
+- Análises detalhadas
+- Métricas Brasil e global
 
-### Temas
-O dashboard suporta alternância automática entre temas:
-- **Escuro**: Padrão, otimizado para uso prolongado
-- **Claro**: Alternativo, melhor para apresentações
+## 🎨 Temas
 
-### APIs
-O dashboard integra com múltiplas fontes:
-- NIST NVD (vulnerabilidades)
-- CISA KEV (alertas críticos)
-- VirusTotal (reputação de IOCs)
-- MITRE ATT&CK (TTPs e grupos)
+O dashboard suporta dois temas:
 
-## 📈 Performance
+- 🌙 **Tema Escuro**: Padrão, ideal para uso prolongado
+- ☀️ **Tema Claro**: Tons de cinza suaves, confortável para leitura
 
-- **Carregamento**: < 2s em conexões normais
-- **Atualizações**: Dados em tempo real via APIs
-- **Responsividade**: Otimizado para desktop e mobile
-- **Compatibilidade**: Chrome, Firefox, Safari, Edge
+A preferência é salva automaticamente no navegador.
 
-## 🔒 Segurança
+## 🔄 Atualizações
 
-- **CSP**: Content Security Policy implementado
-- **HTTPS**: Recomendado para produção
-- **APIs**: Chaves de API não expostas no frontend
-- **Sanitização**: Inputs sanitizados contra XSS
+O dashboard inclui:
+- ⏰ Auto refresh a cada 5 minutos
+- 🔄 Botões de atualização manual
+- 🟢 Status de conectividade dinâmico
+- 📅 Timestamps atualizados
 
-## 📝 Licença
+## 📱 Compatibilidade
 
-Este projeto está licenciado sob CC BY-NC-SA 4.0 - veja os detalhes em [minutocyber.com](https://minutocyber.com)
+- ✅ Chrome/Chromium 90+
+- ✅ Firefox 88+
+- ✅ Safari 14+
+- ✅ Edge 90+
+- ✅ Mobile browsers
 
-## 👨‍💻 Autor
+## 🤝 Contribuição
 
-**Julio Signorini**  
-MinutoCyber - Inteligência Cibernética  
-[minutocyber.com](https://minutocyber.com)
-
-## 🤝 Contribuições
-
-Contribuições são bem-vindas! Por favor:
-1. Faça um fork do projeto
-2. Crie uma branch para sua feature
-3. Commit suas mudanças
-4. Push para a branch
+1. Fork o projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
 5. Abra um Pull Request
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para detalhes.
+
+## 🔗 Links Úteis
+
+- [MinutoCyber](https://minutocyber.com/)
+- [MinutoNews](https://news.minutocyber.com/)
+- [Relatórios RIC](https://minutocyber.com/ric)
 
 ## 📞 Suporte
 
-Para suporte técnico ou dúvidas:
-- Website: [minutocyber.com](https://minutocyber.com)
-- Email: contato@minutocyber.com
+Para dúvidas ou sugestões:
+- 📧 Abra uma issue neste repositório
+- 🌐 Visite [minutocyber.com](https://minutocyber.com/)
 
 ---
 
-**Desenvolvido com ❤️ pela equipe MinutoCyber**
+**Desenvolvido com ❤️ para a comunidade de cibersegurança brasileira**
