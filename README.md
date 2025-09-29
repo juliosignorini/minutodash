@@ -1,4 +1,4 @@
-# 🛡️ MinutoCyber Dashboard
+# 🛡️ Minutodash | inteligência em cibersegurança em tempo real.
 
 Dashboard de cibersegurança em tempo real com métricas, alertas e análises de ameaças.
 
@@ -152,7 +152,3 @@ Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para detalhes.
 Para dúvidas ou sugestões:
 - 📧 Abra uma issue neste repositório
 - 🌐 Visite [minutocyber.com](https://minutocyber.com/)
-
----
-
-**Desenvolvido com ❤️ para a comunidade de cibersegurança brasileira**
