@@ -150,43 +150,6 @@
         .country-badge { background: #334155; padding: 2px 6px; border-radius: 4px; font-size: 12px; }
         
         .animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
-
-        /* Filter Button Styles */
-        .filter-btn {
-            background: #334155;
-            border: 1px solid #475569;
-            color: #f1f5f9;
-            transition: all 0.2s;
-        }
-
-        .filter-btn:hover {
-            background: #475569;
-            border-color: #64748b;
-        }
-
-        body.light-theme .filter-btn {
-            background: #e8e8e8 !important;
-            border: 1px solid #d0d0d0 !important;
-            color: #1e293b !important;
-        }
-
-        body.light-theme .filter-btn:hover {
-            background: #d8d8d8 !important;
-            border-color: #c0c0c0 !important;
-        }
-
-        /* Filter Dropdown Styles */
-        .filter-dropdown {
-            background: #334155;
-            border: 1px solid #475569;
-            color: #f1f5f9;
-        }
-
-        body.light-theme .filter-dropdown {
-            background: #e8e8e8 !important;
-            border: 1px solid #d0d0d0 !important;
-            color: #1e293b !important;
-        }
     </style>
 </head>
 <body>
@@ -215,7 +178,7 @@
                 </div>
                 
                 <div class="flex items-center space-x-2">
-                    <button id="update-btn" class="filter-btn px-4 py-2 rounded-lg text-sm">
+                    <button id="update-btn" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm transition-all">
                         🔄 atualizar
                     </button>
                     <a href="https://news.minutocyber.com/" target="_blank" class="bg-gray-600 hover:bg-gray-700 text-white px-3 py-2 rounded-lg text-sm">🗞️ minutonews</a>
@@ -283,21 +246,21 @@
         <div class="flex items-center justify-between">
             <div class="flex items-center space-x-4">
                 <span class="text-sm text-slate-400">🎯 Filtros:</span>
-                <select id="severityFilter" class="filter-dropdown text-sm rounded px-3 py-1">
+                <select id="severityFilter" class="bg-slate-700 text-slate-200 text-sm rounded px-3 py-1 border border-slate-600">
                     <option value="all">Todas Severidades</option>
                     <option value="critical">Crítica</option>
                     <option value="high">Alta</option>
                     <option value="medium">Média</option>
                     <option value="low">Baixa</option>
                 </select>
-                <select id="typeFilter" class="filter-dropdown text-sm rounded px-3 py-1">
+                <select id="typeFilter" class="bg-slate-700 text-slate-200 text-sm rounded px-3 py-1 border border-slate-600">
                     <option value="all">Todos os Tipos</option>
                     <option value="cve">CVEs</option>
                     <option value="malware">Malware</option>
                     <option value="apt">APTs</option>
                     <option value="ioc">IOCs</option>
                 </select>
-                <select id="timeFilter" class="filter-dropdown text-sm rounded px-3 py-1">
+                <select id="timeFilter" class="bg-slate-700 text-slate-200 text-sm rounded px-3 py-1 border border-slate-600">
                     <option value="24h">Últimas 24h</option>
                     <option value="7d">Últimos 7 dias</option>
                     <option value="30d">Últimos 30 dias</option>
@@ -305,7 +268,7 @@
                 </select>
             </div>
             <div class="flex items-center space-x-2">
-                <button class="filter-btn px-3 py-1 rounded text-sm" onclick="exportRules('yara')">
+                <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm" onclick="exportRules('yara')">
                     📥 YARA Rules
                 </button>
                 <button class="bg-purple-600 hover:bg-purple-700 text-white px-3 py-1 rounded text-sm" onclick="exportRules('sigma')">
@@ -634,7 +597,7 @@
                         <button class="bg-purple-600 hover:bg-purple-700 text-white px-3 py-1 rounded text-sm" onclick="exportIOCs('json')">
                             📥 JSON
                         </button>
-                        <button class="filter-btn px-3 py-1 rounded text-sm update-btn">
+                        <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm update-btn">
                             🔄 Verificar
                         </button>
                     </div>
@@ -721,7 +684,7 @@
                     <h3 class="text-lg font-semibold text-slate-200 flex items-center">
                         🎯 TTPs Mapeados
                     </h3>
-                    <button class="filter-btn px-3 py-1 rounded text-sm update-btn">
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm update-btn">
                         🔄 Sincronizar
                     </button>
                 </div>
@@ -808,7 +771,7 @@
                     <h3 class="text-lg font-semibold text-slate-200 flex items-center" id="ameacas">
                         🕵️ Grupos de Ameaça Ativos
                     </h3>
-                    <button class="filter-btn px-3 py-1 rounded text-sm update-btn">
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm update-btn">
                         🔄 Atualizar
                     </button>
                 </div>
@@ -894,7 +857,7 @@
                     <h3 class="text-lg font-semibold text-slate-200 flex items-center" id="vulnerabilidades">
                         🔥 CVE Críticas
                     </h3>
-                    <button class="filter-btn px-3 py-1 rounded text-sm update-btn">
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm update-btn">
                         🔄 Atualizar
                     </button>
                 </div>
@@ -971,7 +934,7 @@
                     <h3 class="text-lg font-semibold text-slate-200 flex items-center">
                         🚨 Alertas CISA
                     </h3>
-                    <button class="filter-btn px-3 py-1 rounded text-sm update-btn">
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm update-btn">
                         🔄 Atualizar
                     </button>
                 </div>
@@ -1045,7 +1008,7 @@
                     <h3 class="text-lg font-semibold text-slate-200 flex items-center" id="malware">
                         🦠 Análise de Malware
                     </h3>
-                    <button class="filter-btn px-3 py-1 rounded text-sm update-btn">
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm update-btn">
                         🔄 Atualizar
                     </button>
                 </div>
@@ -1134,7 +1097,7 @@
                     <h3 class="text-lg font-semibold text-slate-200 flex items-center" id="noticias">
                         🗞️ minutonews
                     </h3>
-                    <button class="filter-btn px-3 py-1 rounded text-sm update-btn">
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm update-btn">
                         🔄 Atualizar
                     </button>
                 </div>
@@ -1190,7 +1153,7 @@
                     <h3 class="text-lg font-semibold text-slate-200 flex items-center" id="ric">
                         📊 +RIC
                     </h3>
-                    <button class="filter-btn px-3 py-1 rounded text-sm update-btn">
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm update-btn">
                         🔄 Atualizar
                     </button>
                 </div>
@@ -1678,7 +1641,7 @@
         // Show success notification
         function showSuccessNotification() {
             const notification = document.createElement('div');
-            notification.className = 'fixed top-4 right-4 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+            notification.className = 'fixed top-4 right-4 bg-blue-600 text-white px-6 py-3 rounded-lg shadow-lg z-50';
             notification.innerHTML = `
                 <div class="flex items-center space-x-2">
                     <span class="text-lg">🎉</span>
@@ -2016,7 +1979,7 @@
                             <div class="bg-slate-700 rounded p-3">
                                 <h4 class="font-medium text-slate-200 mb-2">IOCs Disponíveis</h4>
                                 <div class="text-lg font-bold text-blue-400">${threat.iocs} indicadores</div>
-                                <button class="mt-2 filter-btn px-3 py-1 rounded text-xs" onclick="exportThreatIOCs('${threatId}')">
+                                <button class="mt-2 bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-xs" onclick="exportThreatIOCs('${threatId}')">
                                     📥 Exportar IOCs
                                 </button>
                             </div>
@@ -2554,13 +2517,34 @@ level: high`
             let currentFilter = 'all';
             
             function createMap() {
-                // Create world map with proper background image
+                // Create a simple and functional world map
                 mapContainer.innerHTML = `
                     <div class="w-full h-full bg-slate-800 rounded-lg relative overflow-hidden" style="background: linear-gradient(135deg, #1e293b 0%, #334155 100%);">
-                        <!-- World Map Background Image -->
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <img src="world-map.png" alt="World Map" class="w-full h-full object-contain opacity-30" style="filter: brightness(0.7) contrast(1.2);">
+                        <!-- Grid background for reference -->
+                        <div class="absolute inset-0 opacity-10">
+                            <div class="grid grid-cols-10 grid-rows-5 h-full">
+                                ${Array(50).fill().map(() => '<div class="border border-slate-600"></div>').join('')}
+                            </div>
                         </div>
+                        
+                        <!-- World regions as simple rectangles -->
+                        <!-- North America -->
+                        <div class="absolute bg-slate-600 opacity-40 rounded" style="left: 10%; top: 20%; width: 25%; height: 35%;"></div>
+                        
+                        <!-- South America -->
+                        <div class="absolute bg-slate-600 opacity-40 rounded" style="left: 20%; top: 50%; width: 15%; height: 40%;"></div>
+                        
+                        <!-- Europe -->
+                        <div class="absolute bg-slate-600 opacity-40 rounded" style="left: 45%; top: 15%; width: 15%; height: 25%;"></div>
+                        
+                        <!-- Africa -->
+                        <div class="absolute bg-slate-600 opacity-40 rounded" style="left: 48%; top: 35%; width: 12%; height: 45%;"></div>
+                        
+                        <!-- Asia -->
+                        <div class="absolute bg-slate-600 opacity-40 rounded" style="left: 62%; top: 10%; width: 30%; height: 50%;"></div>
+                        
+                        <!-- Australia -->
+                        <div class="absolute bg-slate-600 opacity-40 rounded" style="left: 75%; top: 65%; width: 15%; height: 15%;"></div>
                         
                         <!-- Country threat indicators -->
                         <!-- United States -->
