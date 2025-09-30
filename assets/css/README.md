@@ -1,3 +1,2 @@
-assets/css/README.md
-assets/js/README.md
-assets/images/README.md
+# Pasta CSS
+Arquivos de estilos CSS deste projeto devem ser colocados aqui.
