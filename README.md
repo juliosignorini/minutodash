@@ -1,10 +1,6 @@
-# 🛡️ MinutoCyber Dashboard
+# 🛡️ minutodash | inteligência cibernética em tempo real.
 
 Dashboard de cibersegurança em tempo real com métricas, alertas e análises de ameaças.
-
-## 🚀 Demo
-
-**URL Ativa:** [Ver Dashboard](https://dashboard-yaehsr.manus.space/)
 
 ## ✨ Funcionalidades
 
@@ -61,10 +57,10 @@ Dashboard de cibersegurança em tempo real com métricas, alertas e análises de
 
 ```bash
 # Clone o repositório
-git clone https://github.com/SEU-USUARIO/minutocyber-dashboard.git
+git clone https://github.com/SEU-USUARIO/minutodash.git
 
 # Navegue para o diretório
-cd minutocyber-dashboard
+cd minutodash
 
 # Abra o index.html no navegador
 # Ou use um servidor local:
@@ -152,7 +148,3 @@ Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para detalhes.
 Para dúvidas ou sugestões:
 - 📧 Abra uma issue neste repositório
 - 🌐 Visite [minutocyber.com](https://minutocyber.com/)
-
----
-
-**Desenvolvido com ❤️ para a comunidade de cibersegurança brasileira**
