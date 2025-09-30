@@ -139,9 +139,9 @@ Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para detalhes.
 
 ## 🔗 Links Úteis
 
-- [MinutoCyber](https://minutocyber.com/)
-- [MinutoNews](https://news.minutocyber.com/)
-- [Relatórios RIC](https://minutocyber.com/ric)
+- [minutocyber](https://minutocyber.com/)
+- [minutonews](https://news.minutocyber.com/)
+- [minutocyber | RIC](https://minutocyber.com/ric)
 
 ## 📞 Suporte
 
