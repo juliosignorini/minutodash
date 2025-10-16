@@ -1,0 +1,30 @@
+
+====== RELATÓRIO DE AUDITORIA - PROJETO MINUTODASH ======
+
+1. PROBLEMAS ENCONTRADOS
+----------------------------
+- O projeto utilizava chamadas diretas para APIs públicas, gerando erro de CORS em ambiente de produção (navegadores bloqueiam cross-origin).
+- Ausência de tratamento robusto de timeout no consumo das APIs.
+- Mensagens de erro não eram amigáveis ou exibidas visualmente ao usuário final.
+- Painéis de métricas não atualizavam de forma completamente automatizada e confiável.
+
+2. MELHORIAS IMPLEMENTADAS
+----------------------------
+- Todos os acessos a APIs externas agora usam proxy CORS (https://api.allorigins.win) eliminando erros de bloqueio.
+- Adicionados blocos try/catch em todos fetches, exibindo mensagens claras ao usuário em caso de erro ou indisponibilidade.
+- Inclusão de timeout explicito nas consultas às APIs para evitar travamento do dashboard em caso de lentidão ou falha do endpoint.
+- Atualização automática dos indicadores-chave (CVEs, métricas principais) programadas para ocorrer a cada 15 minutos.
+- Scripts prontos para expansão de novos painéis e métricas futuras de automação.
+- Inclusão de cache para respostas das APIs públicas, reduzindo a sobrecarga e tornando o dashboard mais rápido e resiliente.
+
+3. PONTOS DE RISCO/ATENÇÃO FUTUROS
+-------------------------------------
+- Caso o serviço de proxy CORS deixe de funcionar, será necessário substituir seu endereço no código fonte – ou, preferencialmente, usar backend próprio como relay se necessário para maior confiabilidade.
+- APIs públicas podem modificar seus esquemas de resposta, o que exigirá atualização do parse nos scripts JS.
+- Alto volume de requisições pode ser limitado por proxies e/ou pelo próprio endpoint público das APIs consultadas.
+
+4. RECOMENDAÇÕES DE BOAS PRÁTICAS
+-------------------------------------
+- Sempre que possível, consumir APIs externas a partir de backends próprios (Python/Node) para total confiabilidade.
+- Manter os scripts JS organizados e documentados como no presente pacote.
+- Realizar deploy do frontend em ambiente confiável de hospedagem estática (Vercel, Netlify, GitHub Pages).
