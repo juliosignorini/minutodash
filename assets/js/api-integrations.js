@@ -1,49 +1,81 @@
-// Integra com APIs reais de segurança cibernética
 
+// api-integrations.js (VERSÃO SEGURA E AUTOMATIZADA)
 class APIIntegrations {
-    constructor() {
-        this.corsProxy = 'https://api.allorigins.win/get?url=';
-        this.cache = new Map();
-        this.cacheTimeout = 10 * 60 * 1000; // 10 minutos
+  constructor() {
+    this.cache = {};
+    this.cacheTtlMs = 15 * 60 * 1000; // 15 min cache para requisições
+    this.proxyUrl = 'https://api.allorigins.win/get?url=';
+  }
+
+  _getCache(key) {
+    const record = this.cache[key];
+    if (record && (Date.now() < record.expiry)) {
+      return record.value;
     }
+    return null;
+  }
 
-    // Método genérico para cache
-    getCachedData(key) {
-        const cached = this.cache.get(key);
-        if (cached && Date.now() - cached.timestamp < this.cacheTimeout) {
-            return cached.data;
-        }
-        return null;
+  _setCache(key, value) {
+    this.cache[key] = {
+      value,
+      expiry: Date.now() + this.cacheTtlMs
+    };
+  }
+
+  async fetchViaProxy(url, timeoutMs = 15000) {
+    const fullUrl = `${this.proxyUrl}${encodeURIComponent(url)}`;
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), timeoutMs);
+    try {
+      const resp = await fetch(fullUrl, { signal: controller.signal });
+      if (!resp.ok) throw new Error(`Erro HTTP: ${resp.status}`);
+      const wrapped = await resp.json();
+      clearTimeout(timeout);
+      // allorigins.win retorna { contents, status }
+      return JSON.parse(wrapped.contents);
+    } catch (ex) {
+      throw new Error("Erro ao buscar dados da API: " + (ex.message || ex));
     }
+  }
 
-    setCachedData(key, data) {
-        this.cache.set(key, {
-            data: data,
-            timestamp: Date.now()
-        });
+  async fetchCriticalCVEs() {
+    const cacheKey = 'critical-cves';
+    const cached = this._getCache(cacheKey);
+    if (cached) return cached;
+
+    // Datas para os últimos 30 dias em UTC ISO
+    const now = new Date();
+    const prev = new Date();
+    prev.setDate(now.getDate() - 30);
+    
+    const fromDate = prev.toISOString();
+    const url = `https://services.nvd.nist.gov/rest/json/cves/2.0/?cvssV3Severity=CRITICAL&lastModStartDate=${fromDate}`;
+
+    try {
+      const data = await this.fetchViaProxy(url);
+      this._setCache(cacheKey, data);
+      return data;
+    } catch (err) {
+      throw new Error(`Falha ao buscar CVEs críticas: ${err.message}`);
     }
+  }
+}
 
-    // 1. NIST NVD - CVEs Críticas
-    async fetchCriticalCVEs() {
-        const cacheKey = 'critical_cves';
-        const cached = this.getCachedData(cacheKey);
-        if (cached) return cached;
+// Exemplo de uso com atualização automática e tratamento de erro:
+async function atualizarCVEElemento(elementId) {
+  const api = new APIIntegrations();
+  const el = document.getElementById(elementId);
+  if (!el) return;
+  el.innerText = "Carregando CVEs críticas recentes...";
+  try {
+    const dados = await api.fetchCriticalCVEs();
+    el.innerText = `Total de CVEs Críticas nos últimos 30 dias: ${dados.totalResults}`;
+  } catch (e) {
+    el.innerText = "Erro ao buscar dados da NVD: " + e.message;
+  }
+}
 
-        try {
-            console.log('🔍 Buscando CVEs críticas do NIST NVD...');
-            
-            // Calcular data de 30 dias atrás
-            const thirtyDaysAgo = new Date();
-            thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-            const startDate = thirtyDaysAgo.toISOString().split('T')[0];
-            
-            // URL com filtros para CVEs críticas dos últimos 30 dias
-            const url = `https://services.nvd.nist.gov/rest/json/cves/2.0?cvssV3Severity=CRITICAL&pubStartDate=${startDate}T00:00:00.000&resultsPerPage=10&startIndex=0`;
-            
-            const response = await fetch(url);
-            if (!response.ok) throw new Error(`HTTP ${response.status}`);
-            
-            const data = await response.json();
-            const cves = data.vulnerabilities || [];
-            
-            // Ordenar por data de publicação (mais recentes primeiro)
+// Atualização automática a cada 15 minutos
+setInterval(() => atualizarCVEElemento("cve-criticas"), 15*60*1000);
+// Primeira chamada no carregamento
+document.addEventListener("DOMContentLoaded", () => atualizarCVEElemento("cve-criticas"));
