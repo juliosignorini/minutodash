@@ -1808,19 +1808,15 @@
 
             <!-- Analytics -->
             <div id="analytics" class="ct-card p-6 mobile-analytics-section">
-                <div class="flex items-center justify-between mb-6">
+                <div class="mb-6">
                     <h3 class="text-lg font-semibold text-slate-200 flex items-center space-x-2">
                         📊 Analytics
                     </h3>
-                    <div class="flex items-center space-x-2">
-                        <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                        <span class="text-green-400 text-sm font-medium">Live</span>
-                    </div>
                 </div>
                 
                 <!-- Main Data Feeds -->
                 <div class="mb-6">
-                    <h4 class="text-sm font-medium text-slate-300 mb-3 flex items-center">
+                    <h4 class="text-sm font-medium text-slate-300 mb-3 flex items-center justify-end">
                         <span class="mr-2">📈</span> Feeds de Dados
                     </h4>
                     <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" id="analytics-feeds">
@@ -1830,7 +1826,7 @@
                 
                 <!-- Performance Metrics -->
                 <div class="mb-6">
-                    <h4 class="text-sm font-medium text-slate-300 mb-3 flex items-center">
+                    <h4 class="text-sm font-medium text-slate-300 mb-3 flex items-center justify-end">
                         <span class="mr-2">⚡</span> Performance
                     </h4>
                     <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
@@ -1867,7 +1863,7 @@
                 
                 <!-- API Sources -->
                 <div class="mb-6">
-                    <h4 class="text-sm font-medium text-slate-300 mb-3 flex items-center">
+                    <h4 class="text-sm font-medium text-slate-300 mb-3 flex items-center justify-end">
                         <span class="mr-2">🔗</span> Fontes de Dados
                     </h4>
                     <div class="grid grid-cols-3 lg:grid-cols-6 gap-3" id="analytics-sources">
@@ -1895,31 +1891,42 @@
                 
                 <!-- Additional Metrics for Height -->
                 <div class="mb-4">
-                    <h4 class="text-sm font-medium text-slate-300 mb-3 flex items-center">
+                    <h4 class="text-sm font-medium text-slate-300 mb-3 flex items-center justify-end">
                         <span class="mr-2">📉</span> Estatísticas Adicionais
                     </h4>
-                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
-                        <div class="bg-gray-700/20 rounded-lg p-2 text-center">
-                            <div class="text-sm font-bold text-cyan-400">85%</div>
-                            <div class="text-xs text-slate-500">Confidence</div>
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div class="bg-gray-700/30 rounded-lg p-3 text-center">
+                            <div class="flex items-center justify-center mb-2">
+                                <span class="text-lg mr-2">🎯</span>
+                                <span class="text-lg font-bold text-cyan-400">85%</span>
+                            </div>
+                            <div class="text-xs text-slate-400">Confidence</div>
                         </div>
-                        <div class="bg-gray-700/20 rounded-lg p-2 text-center">
-                            <div class="text-sm font-bold text-yellow-400">23</div>
-                            <div class="text-xs text-slate-500">Novos IOCs</div>
+                        <div class="bg-gray-700/30 rounded-lg p-3 text-center">
+                            <div class="flex items-center justify-center mb-2">
+                                <span class="text-lg mr-2">🆕</span>
+                                <span class="text-lg font-bold text-yellow-400">23</span>
+                            </div>
+                            <div class="text-xs text-slate-400">Novos IOCs</div>
                         </div>
-                        <div class="bg-gray-700/20 rounded-lg p-2 text-center">
-                            <div class="text-sm font-bold text-pink-400">12</div>
-                            <div class="text-xs text-slate-500">Alertas</div>
+                        <div class="bg-gray-700/30 rounded-lg p-3 text-center">
+                            <div class="flex items-center justify-center mb-2">
+                                <span class="text-lg mr-2">🚨</span>
+                                <span class="text-lg font-bold text-pink-400">12</span>
+                            </div>
+                            <div class="text-xs text-slate-400">Alertas</div>
                         </div>
-                        <div class="bg-gray-700/20 rounded-lg p-2 text-center">
-                            <div class="text-sm font-bold text-indigo-400">4.2GB</div>
-                            <div class="text-xs text-slate-500">Data/24h</div>
+                        <div class="bg-gray-700/30 rounded-lg p-3 text-center">
+                            <div class="flex items-center justify-center mb-2">
+                                <span class="text-lg mr-2">📊</span>
+                                <span class="text-lg font-bold text-indigo-400">4.2GB</span>
+                            </div>
+                            <div class="text-xs text-slate-400">Data/24h</div>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Footer -->
-<!-- 
                 <div class="border-t border-slate-700 mt-4 pt-3 flex justify-between items-center text-xs">
                     <div class="flex items-center">
                         <span class="text-green-400">Fonte:</span> <span class="text-slate-300 ml-1">NIST NVD • CISA • VirusTotal</span>
@@ -1929,18 +1936,20 @@
                         <span class="text-green-400 font-medium">Live</span>
                     </div>
                 </div>
- -->
             </div>
         </div>
 
         <!-- minutocyber Section -->
         <div id="minutocyber" class="ct-card p-6">
-            <!-- Header sem indicador live -->
-            <div class="flex items-center mb-6">
-                <span class="text-2xl mr-3">🔐</span>
-                <div>
+            <!-- Header com indicador live à direita -->
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center">
+                    <span class="text-2xl mr-3">🔐</span>
                     <h3 class="text-xl font-bold text-slate-200">minutocyber</h3>
-                    <p class="text-xs text-slate-400">Inteligência em Cibersegurança</p>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                    <span class="text-green-400 font-medium text-xs">Inteligência em Cibersegurança</span>
                 </div>
             </div>
             
@@ -1948,11 +1957,14 @@
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <!-- +RIC Column -->
                 <div class="bg-slate-800/50 rounded-xl p-5 border border-slate-700/50 hover:border-blue-500/30 transition-all duration-300">
-                    <div class="flex items-center space-x-3 mb-4">
-                        <span class="text-xl">📊</span>
-                        <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-xl">📊</span>
                             <h4 class="text-lg font-semibold text-slate-200">+RIC</h4>
-                            <p class="text-xs text-slate-400">Relatórios de Incidentes</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                            <span class="text-xs text-green-400">Relatórios de Incidentes</span>
                         </div>
                     </div>
                     <div class="space-y-3" id="ric-reports" style="max-height: 400px; overflow-y: auto;" class="scrollbar-thin scrollbar-thumb-slate-600 scrollbar-track-slate-800">
@@ -1962,11 +1974,14 @@
                 
                 <!-- News Column -->
                 <div class="bg-slate-800/50 rounded-xl p-5 border border-slate-700/50 hover:border-green-500/30 transition-all duration-300">
-                    <div class="flex items-center space-x-3 mb-4">
-                        <span class="text-xl">📰</span>
-                        <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-xl">📰</span>
                             <h4 class="text-lg font-semibold text-slate-200">News</h4>
-                            <p class="text-xs text-slate-400">Digest Tecnológico</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                            <span class="text-xs text-green-400">Digest Tecnológico</span>
                         </div>
                     </div>
                     <div class="space-y-3" id="news-digest" style="max-height: 400px; overflow-y: auto;" class="scrollbar-thin scrollbar-thumb-slate-600 scrollbar-track-slate-800">
@@ -1976,11 +1991,14 @@
                 
                 <!-- Artigos Column -->
                 <div class="bg-slate-800/50 rounded-xl p-5 border border-slate-700/50 hover:border-purple-500/30 transition-all duration-300">
-                    <div class="flex items-center space-x-3 mb-4">
-                        <span class="text-xl">✍️</span>
-                        <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-xl">✍️</span>
                             <h4 class="text-lg font-semibold text-slate-200">Artigos</h4>
-                            <p class="text-xs text-slate-400">Colunas Especializadas</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                            <span class="text-xs text-green-400">Colunas Especializadas</span>
                         </div>
                     </div>
                     <div class="space-y-3" id="articles-list" style="max-height: 400px; overflow-y: auto;" class="scrollbar-thin scrollbar-thumb-slate-600 scrollbar-track-slate-800">
