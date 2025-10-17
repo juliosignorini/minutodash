@@ -25,7 +25,7 @@ class SectionFooters {
         this.updateGeolocationFooter();
         this.updateIOCFooter();
         this.updateMalwareFooter();
-        this.updateStatsFooter();
+        // this.updateStatsFooter(); // Desabilitado - rodapé já está no HTML
         this.updateSpecificSectionsFooters();
     }
 
@@ -197,22 +197,10 @@ class SectionFooters {
         }
     }
 
-    updateStatsFooter() {
-        // Atualizar rodapé da seção de estatísticas live
-        const statsSection = document.querySelector('#analytics');
-        if (statsSection) {
-            const statsCard = statsSection.closest('.ct-card');
-            if (statsCard) {
-                const existingP = statsCard.querySelector('p.text-xs.text-slate-500');
-                if (existingP) existingP.remove();
-                
-                statsCard.insertAdjacentHTML('beforeend', this.createFooter({
-                    dataSource: 'NIST NVD • CISA • VirusTotal',
-                    isLive: true
-                }));
-            }
-        }
-    }
+    // updateStatsFooter() {
+    //     // Função removida para evitar duplicação de rodapés na seção Analytics
+    //     // A seção Analytics já possui indicador Live no cabeçalho
+    // }
 
     updateSpecificSectionsFooters() {
         // 🌍 Países com Mais Ameaças
