@@ -3492,8 +3492,7 @@ level: high`
         }
 
         // Infrastructure Status Functionality
-        function loadInfraStatus() {
-            const services = [
+        let infraServices = [
                 {
                     name: "PIX",
                     emoji: "💳",
@@ -3591,6 +3590,44 @@ level: high`
                     trend: [1, 1, 2, 1, 2, 1, 1, 2, 1, 2, 1, 1]
                 }
             ];
+
+        // Função para gerar variações nos dados de infraestrutura
+        function updateInfraData() {
+            infraServices.forEach(service => {
+                // Variação nos reports (±10%)
+                const baseReports = service.reports;
+                const variation = Math.floor(Math.random() * 0.2 * baseReports) - (0.1 * baseReports);
+                service.reports = Math.max(0, Math.floor(baseReports + variation));
+                
+                // Variação na latência (±20ms)
+                const currentLatency = parseInt(service.latency);
+                const latencyVariation = Math.floor(Math.random() * 40) - 20;
+                service.latency = `${Math.max(10, currentLatency + latencyVariation)}ms`;
+                
+                // Atualizar trend (remover primeiro, adicionar novo no final)
+                service.trend.shift();
+                const newTrendValue = Math.max(1, Math.min(20, service.trend[service.trend.length - 1] + (Math.random() - 0.5) * 4));
+                service.trend.push(Math.floor(newTrendValue));
+                
+                // Ocasionalmente mudar status baseado nos reports
+                if (Math.random() < 0.1) { // 10% chance de mudança
+                    if (service.reports > 1000) {
+                        service.status = 'CRITICAL';
+                        service.correlation = 'high';
+                    } else if (service.reports > 100) {
+                        service.status = 'DEGRADED';
+                        service.correlation = 'medium';
+                    } else {
+                        service.status = 'ONLINE';
+                        service.correlation = 'low';
+                    }
+                }
+            });
+        }
+
+        async function loadInfraStatus() {
+            // Buscar dados de APIs reais
+            const services = await window.infraStatusAPI.fetchAllStatuses();
 
             // Update summary stats
             const onlineCount = services.filter(s => s.status === 'ONLINE').length;
@@ -4382,6 +4419,11 @@ level: high`
             // Start real-time updates
             setInterval(updateTimestamps, 60000);
             setInterval(updateCriticalAlert, 600000); // Update alert every 10 minutes
+            setInterval(() => {
+                updateInfraData();
+                loadInfraStatus();
+                console.log('🔄 Infra Status atualizado:', new Date().toLocaleTimeString());
+            }, 45000); // Update infrastructure status every 45 seconds
             
             // Show success notification
             setTimeout(() => {
@@ -6763,6 +6805,7 @@ Not an official Manus doc nor endorsed by Manus. Content may contain inaccuracie
   			}
 			})
 		</script>
+<script src="assets/js/infra-status-api.js"></script>
 <script src="assets/js/dashboard-automated.js"></script>
 <script src="assets/js/api-integrations.js"></script>
 <!-- <script src="assets/js/extra-threat-intel.js"></script> Comentado para evitar conflito com funções internas -->
