@@ -2501,6 +2501,36 @@
 
         // Show Risk Details Modal
         function showRiskDetails() {
+            // Obter valores atuais do dashboard
+            const cvesElement = document.querySelector('.text-3xl.font-bold');
+            const cvesCount = cvesElement ? cvesElement.textContent.trim() : '47';
+            
+            const cisaElement = document.querySelectorAll('.text-3xl.font-bold')[1];
+            const cisaCount = cisaElement ? cisaElement.textContent.trim() : '12';
+            
+            // Contar APTs ativos (grupos com status ATIVO)
+            const aptElements = document.querySelectorAll('.bg-red-900');
+            const aptCount = aptElements.length || 3;
+            
+            // Determinar impacto de negócio baseado no Risk Score
+            const riskScoreElement = document.querySelector('.text-5xl.font-bold');
+            const riskScore = riskScoreElement ? parseInt(riskScoreElement.textContent) : 51;
+            let businessImpact = 'Médio';
+            let impactColor = 'text-yellow-400';
+            if (riskScore >= 70) {
+                businessImpact = 'Crítico';
+                impactColor = 'text-red-400';
+            } else if (riskScore >= 50) {
+                businessImpact = 'Alto';
+                impactColor = 'text-orange-400';
+            } else if (riskScore >= 30) {
+                businessImpact = 'Médio';
+                impactColor = 'text-yellow-400';
+            } else {
+                businessImpact = 'Baixo';
+                impactColor = 'text-green-400';
+            }
+            
             const modal = document.createElement('div');
             modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
             modal.innerHTML = `
@@ -2517,22 +2547,22 @@
                         <div class="grid grid-cols-2 gap-4">
                             <div class="bg-slate-700 rounded p-3">
                                 <div class="text-slate-300 font-medium">Vulnerabilidades Críticas</div>
-                                <div class="text-red-400 text-lg">47 CVEs</div>
+                                <div class="text-red-400 text-lg">${cvesCount} CVEs</div>
                                 <div class="text-xs text-slate-400">Peso: 35% do score</div>
                             </div>
                             <div class="bg-slate-700 rounded p-3">
                                 <div class="text-slate-300 font-medium">Exploits Ativos</div>
-                                <div class="text-orange-400 text-lg">12 ativos</div>
+                                <div class="text-orange-400 text-lg">${cisaCount} ativos</div>
                                 <div class="text-xs text-slate-400">Peso: 25% do score</div>
                             </div>
                             <div class="bg-slate-700 rounded p-3">
                                 <div class="text-slate-300 font-medium">APTs Ativos</div>
-                                <div class="text-yellow-400 text-lg">3 grupos</div>
+                                <div class="text-yellow-400 text-lg">${aptCount} grupos</div>
                                 <div class="text-xs text-slate-400">Peso: 20% do score</div>
                             </div>
                             <div class="bg-slate-700 rounded p-3">
                                 <div class="text-slate-300 font-medium">Impacto de Negócio</div>
-                                <div class="text-purple-400 text-lg">Alto</div>
+                                <div class="${impactColor} text-lg">${businessImpact}</div>
                                 <div class="text-xs text-slate-400">Peso: 20% do score</div>
                             </div>
                         </div>
@@ -6808,7 +6838,7 @@ Not an official Manus doc nor endorsed by Manus. Content may contain inaccuracie
 <script src="assets/js/infra-status-api.js"></script>
 <script src="assets/js/dashboard-automated.js"></script>
 <script src="assets/js/api-integrations.js"></script>
-<!-- <script src="assets/js/extra-threat-intel.js"></script> Comentado para evitar conflito com funções internas -->
+<script src="assets/js/backend-integration.js"></script>
 <script src="assets/js/dashboard-automation.js"></script>
 <script src="assets/js/section-footers.js"></script>
 
