@@ -1,193 +1,210 @@
-# 🛡️ minutodash | inteligência cibernética em tempo real.
+# MinutoDash 🛡️
 
-Dashboard de cibersegurança em tempo real com métricas, alertas e análises de ameaças.
+**Cyber Threat Intelligence Dashboard** — Dashboard em tempo real para monitoramento de ameaças cibernéticas, vulnerabilidades e inteligência de segurança.
 
-## ✨ Funcionalidades
+## 🎯 Visão Geral
 
-- 📊 **Métricas em Tempo Real**: CVEs críticas, alertas CISA, análise de malware
-- 🎯 **TTPs Mapeados**: Integração com framework MITRE ATT&CK
-- 🗞️ **MinutoNews**: Digests semanais de tecnologia e cibersegurança
-- 📋 **Relatórios RIC**: Relatórios semanais de incidentes cibernéticos
-- 🌙 **Tema Claro/Escuro**: Alternância entre temas com persistência
-- 📱 **Responsivo**: Funciona perfeitamente em desktop e mobile
-- 🔄 **Auto Refresh**: Atualização automática a cada 5 minutos
-- 🟢 **Status Dinâmico**: Indicador Online/Offline baseado em atividade
+MinutoDash é um dashboard moderno e interativo construído com **React 19**, **Tailwind CSS 4** e **shadcn/ui** que oferece visibilidade completa sobre o panorama de ameaças cibernéticas. Integra dados de múltiplas APIs de inteligência de ameaças para fornecer insights em tempo real sobre CVEs, malware, APT groups e origem geográfica de ataques.
 
-## 🆕 Novidades v7 (Outubro 2024)
+## ✨ Recursos Principais
 
-### 🔧 Correções Implementadas
-- **Duplicação de rodapés eliminada** na seção Analytics
-- **Padronização completa** de caixas e indicadores em todas as seções
-- **Consistência visual** aprimorada em todo o dashboard
+### 📊 Seções do Dashboard
 
-### 🎨 Melhorias Visuais
-- **Alinhamento à direita** dos títulos na seção Analytics
-- **Emojis adicionados** aos indicadores das Estatísticas Adicionais
-- **Layout modernizado** da seção minutocyber com formatação verde e bolinhas piscando
-- **Fonte otimizada** para melhor equilíbrio visual e legibilidade
+1. **Painel de Ameaças** — Visão geral com CVEs críticas, nível de ameaça global, security advisories e APT groups rastreados
+2. **Executive Risk Score** — Score de risco global calculado em tempo real com fatores de risco e evolução temporal
+3. **Vulnerabilidades** — Timeline de ameaças (30 dias) e distribuição por severidade com animação de entrada
+4. **Inteligência de Ameaças** — Abas com APT Groups, Advisories e CVEs Críticas Recentes (dados NVD LIVE)
+5. **Malware & Setores** — Distribuição de malware com dados dinâmicos e setores mais afetados
+6. **Origem Geográfica de Ameaças** — Mapa-múndi minimalista com zoom por região (Mundo, América Latina, Europa, Ásia)
+7. **Analytics** — Gráficos de tendências e distribuição de ameaças
+8. **Status de Serviços** — Monitoramento de status de APIs e serviços críticos (GitHub, Notion, etc.)
+9. **Infraestrutura** — Status de componentes críticos de infraestrutura
 
-### 📊 Seção Analytics Aprimorada
-- **Feeds de Dados**: Títulos alinhados à direita para melhor organização
-- **Performance**: Layout consistente com outras seções
-- **Fontes de Dados**: Formatação padronizada
-- **Estatísticas Adicionais**: Indicadores com emojis e fonte aumentada
-  - 🎯 **85%** Confidence
-  - 🆕 **23** Novos IOCs  
-  - 🚨 **12** Alertas
-  - 📊 **4.2GB** Data/24h
+### 🎨 Design & UX
 
-### 🔐 Seção MinutoCyber Redesenhada
-- **Layout moderno** com títulos à esquerda e descrições à direita
-- **Formatação verde** com bolinhas piscando para indicar status "Live"
-- **Seções organizadas**:
-  - 📊 **+RIC** → Relatórios de Incidentes
-  - 📰 **News** → Digest Tecnológico
-  - ✍️ **Artigos** → Colunas Especializadas
+- **Tema escuro premium** com paleta de cores estratégica para análise de segurança
+- **Animações fluidas** com Framer Motion (entrada em cascata, preenchimento de progress bars, transições de zoom)
+- **Mapa interativo** com react-simple-maps — zoom por região, tooltips detalhados, dots animados
+- **Progress bars horizontais** com gradiente e glow para distribuição de severidade
+- **Responsivo** — funciona em desktop, tablet e mobile
+- **Acessibilidade** — foco em contraste, navegação por teclado e ARIA labels
 
-## 🛠️ Tecnologias
+### 🔌 Integrações de API
 
-- **Frontend**: HTML5, CSS3 (Tailwind), JavaScript ES6+
-- **Gráficos**: Chart.js
-- **Ícones**: Emojis nativos
-- **Hospedagem**: Compatível com GitHub Pages, Vercel, Netlify
+- **NVD (NIST)** — CVEs críticas, distribuição por severidade (chamadas serializadas com retry)
+- **DShield** — Ameaças globais e IPs atacantes
+- **MITRE ATT&CK** — Grupos APT e técnicas de ataque
+- **GitHub Status** — Status da API GitHub
+- **Notion Status** — Status do Notion
+- **StatusPage** — Monitoramento de múltiplos serviços
 
-## 📦 Estrutura do Projeto
+## 🚀 Como Usar
 
-```
-├── index.html              # Arquivo principal
-├── minutodash.png          # Logo tema escuro
-├── assets/
-│   ├── images/
-│   │   ├── minutodash_black.png    # Logo tema claro
-│   │   ├── minutonews_dash.png     # Logo MinutoNews
-│   │   └── creativecommons_64.png  # Ícone Creative Commons
-│   ├── js/                 # Scripts auxiliares
-│   │   ├── dashboard-automated.js   # Automação do dashboard
-│   │   ├── section-footers.js      # Gerenciamento de rodapés
-│   │   ├── api-integrations.js     # Integrações de API
-│   │   └── extra-threat-intel.js   # Inteligência de ameaças
-│   └── css/                # Estilos adicionais
-├── AUDITORIA.txt          # Log de auditoria e melhorias
-├── README_DEPLOY.txt      # Instruções de deploy
-└── README.md              # Este arquivo
-```
+### Pré-requisitos
 
-## 🚀 Deploy Rápido
+- Node.js 22.x ou superior
+- pnpm (recomendado) ou npm/yarn
 
-### GitHub Pages
-1. Fork este repositório
-2. Vá em Settings > Pages
-3. Source: Deploy from a branch
-4. Branch: main / root
-5. Salve e aguarde alguns minutos
-
-### Vercel
-1. Importe este repositório no Vercel
-2. Deploy automático
-3. URL personalizada disponível
-
-### Netlify
-1. Arraste a pasta do projeto para Netlify
-2. Deploy instantâneo
-3. Domínio personalizado gratuito
-
-## 🔧 Configuração Local
+### Instalação
 
 ```bash
 # Clone o repositório
-git clone https://github.com/SEU-USUARIO/minutodash.git
-
-# Navegue para o diretório
+git clone https://github.com/seu-usuario/minutodash.git
 cd minutodash
 
-# Abra o index.html no navegador
-# Ou use um servidor local:
-python -m http.server 8000
-# Acesse: http://localhost:8000
+# Instale as dependências
+pnpm install
+
+# Inicie o servidor de desenvolvimento
+pnpm dev
 ```
 
-## 📊 Seções do Dashboard
+O dashboard estará disponível em `http://localhost:3000`
 
-### 🔥 Vulnerabilidades
-- CVEs críticas do NIST NVD
-- Alertas CISA atualizados
-- Scores CVSS e impacto
+### Build para Produção
 
-### ⚠️ Ameaças
-- Grupos APT ativos
-- Países com mais ameaças
-- Níveis de ameaça atuais
+```bash
+# Build otimizado
+pnpm build
 
-### 🦠 Malware
-- Análise VirusTotal
-- Famílias de malware ativas
-- IOCs e indicadores
+# Preview do build
+pnpm preview
+```
 
-### 🌍 Geo
-- Mapeamento geográfico de ameaças
-- Análise por região e país
-- Visualização interativa
+## 📁 Estrutura do Projeto
 
-### 🔐 MinutoCyber
-- **+RIC**: Relatórios semanais de incidentes cibernéticos
-- **News**: Digest tecnológico semanal curado
-- **Artigos**: Colunas especializadas em cibersegurança
+```
+minutodash/
+├── client/
+│   ├── public/              # Assets estáticos
+│   ├── src/
+│   │   ├── components/      # Componentes React reutilizáveis
+│   │   │   ├── sections/    # Seções do dashboard
+│   │   │   ├── ui/          # Componentes shadcn/ui
+│   │   │   ├── InteractiveThreatMap.tsx
+│   │   │   ├── DashboardHeader.tsx
+│   │   │   └── SourceFooter.tsx
+│   │   ├── pages/           # Páginas (Home)
+│   │   ├── hooks/           # Custom hooks (useApiData, etc.)
+│   │   ├── lib/             # Utilitários (apiService, data, etc.)
+│   │   ├── contexts/        # React contexts
+│   │   ├── App.tsx          # Roteamento principal
+│   │   ├── main.tsx         # Entry point React
+│   │   └── index.css        # Design tokens globais
+│   └── index.html           # HTML template
+├── server/                  # Placeholder para compatibilidade
+├── shared/                  # Placeholder para compatibilidade
+├── package.json
+├── vite.config.ts
+├── tsconfig.json
+└── README.md
+```
 
-### 📈 Analytics
-- **Feeds de Dados**: Métricas de performance e confiabilidade
-- **Performance**: Estatísticas de sistema em tempo real
-- **Fontes de Dados**: Integração com múltiplas APIs
-- **Estatísticas Adicionais**: Indicadores avançados com emojis
+## 🛠️ Stack Tecnológico
 
-### ⚙️ Infra Status
-- Status de infraestrutura em tempo real
-- Monitoramento de serviços críticos
-- Indicadores de saúde do sistema
+| Tecnologia | Versão | Propósito |
+|-----------|--------|----------|
+| React | 19 | Framework UI |
+| TypeScript | 5.x | Type safety |
+| Tailwind CSS | 4 | Styling |
+| shadcn/ui | Latest | Componentes UI |
+| Recharts | Latest | Gráficos e visualizações |
+| react-simple-maps | Latest | Mapa interativo |
+| Framer Motion | Latest | Animações |
+| Wouter | Latest | Roteamento client-side |
+| Vite | 7.x | Build tool |
 
-## 🎨 Temas
+## 🎨 Design Philosophy
 
-O dashboard suporta dois temas:
+- **Cyber Intelligence Briefing** — Layout premium inspirado em briefings de inteligência
+- **Funcional & Elegante** — Prioriza clareza de informação sem sacrificar estética
+- **Minimalismo Estratégico** — Sem elementos decorativos desnecessários
+- **Cores Semânticas** — Vermelho (crítico), Laranja (alto), Amarelo (médio), Verde (baixo)
+- **Animações Propositais** — Cada animação comunica estado ou transição
 
-- 🌙 **Tema Escuro**: Padrão, ideal para uso prolongado
-- ☀️ **Tema Claro**: Tons de cinza suaves, confortável para leitura
+## 📊 Dados & APIs
 
-A preferência é salva automaticamente no navegador.
+### Fontes de Dados
 
-## 🔄 Atualizações
+- **NVD (NIST)** — National Vulnerability Database (CVEs)
+- **DShield** — Internet Storm Center (ameaças globais)
+- **MITRE ATT&CK** — Grupos APT e técnicas
+- **GitHub Status API** — Status de serviços GitHub
+- **Notion Status** — Status do Notion
+- **StatusPage** — Monitoramento de infraestrutura
 
-O dashboard inclui:
-- ⏰ Auto refresh a cada 5 minutos
-- 🔄 Botões de atualização manual
-- 🟢 Status de conectividade dinâmico
-- 📅 Timestamps atualizados
-- 🎯 Indicadores "Live" em tempo real
+### Tratamento de Dados
 
-## 📱 Compatibilidade
+- **Deduplicação** — Evita chamadas duplicadas do React Strict Mode
+- **Serialização** — Chamadas NVD serializadas com delay para evitar rate limiting
+- **Retry Logic** — Até 2 tentativas com backoff exponencial
+- **Cache** — Dados cacheados por 5 minutos (configurável)
 
-- ✅ Chrome/Chromium 90+
-- ✅ Firefox 88+
-- ✅ Safari 14+
-- ✅ Edge 90+
-- ✅ Mobile browsers (design responsivo)
+## 🔒 Segurança
 
-## 🎯 Qualidade e Performance
+- **HTTPS** — Todas as chamadas de API via HTTPS
+- **CORS** — Proxy Manus para contornar restrições CORS
+- **No Secrets** — Nenhuma chave de API armazenada no código
+- **Environment Variables** — Configurações sensíveis via `.env`
 
-### Otimizações v7
-- **Código limpo** e bem documentado
-- **Performance aprimorada** com carregamento otimizado
-- **Acessibilidade** melhorada com contraste adequado
-- **Responsividade** testada em múltiplos dispositivos
-- **Consistência visual** em todas as seções
+## 🚀 Deployment
 
-### Métricas de Qualidade
-- ✅ **Validação HTML5** completa
-- ✅ **CSS otimizado** com Tailwind
-- ✅ **JavaScript modular** e eficiente
-- ✅ **Compatibilidade cross-browser** testada
+### Manus (Recomendado)
 
-## 🤝 Contribuição
+```bash
+# Publicar via Manus UI
+# 1. Salve um checkpoint
+# 2. Clique em "Publish" na Management UI
+# 3. Escolha domínio customizado ou use o auto-gerado
+```
 
-1. Fork o projeto
+### GitHub Pages / Vercel / Netlify
+
+```bash
+# Build estático
+pnpm build
+
+# Deploy do diretório dist/
+```
+
+## 📝 Configuração
+
+### Variáveis de Ambiente
+
+Crie um arquivo `.env.local`:
+
+```env
+VITE_APP_TITLE=MinutoDash
+VITE_APP_LOGO=https://seu-logo-url.com/logo.svg
+VITE_ANALYTICS_ENDPOINT=https://seu-analytics.com
+VITE_ANALYTICS_WEBSITE_ID=seu-id
+```
+
+## 🐛 Troubleshooting
+
+### Dados NVD não carregam
+
+- Verifique a conexão com a internet
+- O NVD tem rate limiting — aguarde alguns segundos
+- Verifique os logs do browser console
+
+### Mapa não aparece
+
+- Verifique se o arquivo TopoJSON está acessível (CDN)
+- Limpe o cache do browser
+- Tente recarregar a página
+
+### Animações lentas
+
+- Desative extensões do browser que modificam CSS
+- Verifique a performance do GPU
+- Reduza a qualidade de animações em dispositivos lentos
+
+## 🤝 Contribuindo
+
+Contribuições são bem-vindas! Por favor:
+
+1. Fork o repositório
 2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
 3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
 4. Push para a branch (`git push origin feature/AmazingFeature`)
@@ -195,20 +212,25 @@ O dashboard inclui:
 
 ## 📄 Licença
 
-Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para detalhes.
+Este projeto está licenciado sob a MIT License — veja o arquivo LICENSE para detalhes.
 
-## 🔗 Links Úteis
+## 👨‍💻 Autor
 
-- [minutocyber](https://minutocyber.com/)
-- [minutonews](https://news.minutocyber.com/)
-- [minutocyber | RIC](https://minutocyber.com/ric)
+Desenvolvido como uma solução de cyber threat intelligence dashboard.
+
+## 🙏 Agradecimentos
+
+- NIST NVD por dados de vulnerabilidades
+- MITRE ATT&CK pela framework de técnicas
+- Comunidade open-source React/Tailwind
+- shadcn/ui pelos componentes premium
 
 ## 📞 Suporte
 
-Para dúvidas ou sugestões:
-- 📧 Abra uma issue neste repositório
-- 🌐 Visite [minutocyber.com](https://minutocyber.com/)
+Para suporte, abra uma issue no GitHub ou entre em contato através de [seu-email@example.com].
 
 ---
 
-**MinutoDash v7** - Dashboard de cibersegurança profissional com design moderno e funcionalidades avançadas.
+**Última atualização:** Março 2026  
+**Versão:** 1.0.0  
+**Status:** ✅ Produção
