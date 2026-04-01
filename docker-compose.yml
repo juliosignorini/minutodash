@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  minutodash:
+    build: .
+    container_name: minutodash
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - NODE_ENV=production
+      - UPDATE_INTERVAL=60000
+      - VIRUSTOTAL_API_KEY=${VIRUSTOTAL_API_KEY}
+      - SHODAN_API_KEY=${SHODAN_API_KEY}
+      - ALIENVAULT_API_KEY=${ALIENVAULT_API_KEY}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
