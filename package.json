@@ -7,7 +7,8 @@
     "start": "node server-apis-complete.js",
     "dev": "nodemon server-apis-complete.js",
     "lint": "eslint . --ext .js",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "package": "zip -r minutodash.zip . -x '*.git*' -x 'node_modules/*' -x 'minutodash.zip'"
   },
   "dependencies": {
     "compression": "^1.7.4",
